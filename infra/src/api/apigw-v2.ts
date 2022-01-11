@@ -4,14 +4,17 @@ import * as apigw from "@aws-cdk/aws-apigatewayv2-alpha";
 import { HttpLambdaIntegration } from "@aws-cdk/aws-apigatewayv2-integrations-alpha";
 
 import LambdaFunctions from "../function/lambda";
+import CognitoPool from "../auth/cognito";
 
 class ApiGateway {
   private _httpApi: apigw.HttpApi;
-  private _lambdaFunctions: LambdaFunctions;
   private _apiIntegration: HttpLambdaIntegration;
+  private _lambdaFunctions: LambdaFunctions;
+  private _cognitoPool: CognitoPool;
 
   constructor(scope: Construct, id: string) {
     this._lambdaFunctions = new LambdaFunctions(scope, id);
+    this._cognitoPool = new CognitoPool(scope, id);
 
     this._httpApi = new apigw.HttpApi(scope, `${id}-api-gateway-v2`, {
       description: "HTTP API responsible for proxy incomming request to lambda",
@@ -39,6 +42,7 @@ class ApiGateway {
       path: "/graphql",
       methods: [apigw.HttpMethod.POST],
       integration: this._apiIntegration,
+      authorizer: this._cognitoPool.authorizer,
     });
 
     new cdk.CfnOutput(scope, "apiUrl", {
