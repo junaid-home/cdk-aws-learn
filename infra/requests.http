@@ -1,0 +1,9 @@
+@remote = https://2nslkri20c.execute-api.ap-southeast-1.amazonaws.com
+
+POST {{remote}}/graphql
+Content-Type: application/json
+
+{
+    "query": "query { hello }"
+}
+###
