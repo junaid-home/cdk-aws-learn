@@ -1,7 +1,13 @@
-# Coursel (serverless course selling Application).
+# Coursel - (Learning serverless CDK with Typescript).
+
 #### Tech Stack
->  Reactjs, Node.js(Graphql, Apollo).
-#### Services 
-> Lambda, Api Gateway, DynamoDB, Cognito, cloudfront, s3.
+
+> Node.js(Graphql, Apollo).
+
+#### Services
+
+> Lambda, Api Gateway, Cognito, s3.
+
 #### IaC
+
 > AWS CDK with Typescript.
