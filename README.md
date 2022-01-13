@@ -1,4 +1,4 @@
-# Coursel - (Learning serverless CDK with Typescript).
+Learning serverless CDK with Typescript
 
 #### Tech Stack
 
